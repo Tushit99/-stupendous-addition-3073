@@ -1,0 +1,10 @@
+
+#main{
+    display: flex; 
+}
+
+#main>div{
+    padding: 10px;
+}
+
+
