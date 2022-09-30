@@ -14,6 +14,7 @@
         <div id="main">
             <nav>
                 <img onclick="shoping()" src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/images/supply/partner-training/1628575858610-5b0ae4.png"
+                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/images/supply/partner-training/1628575858610-5b0ae4.png"
                     alt="">
                 <div>
                     <a href=""> Blog </a>
@@ -27,6 +28,8 @@
             <div>
                 <button onclick="order()"> ONGOING </button>
                 <button onclick="history2()"> HISTORY </button>
+                <button onclick=""> ONGOING </button>
+                <button onclick=""> HISTORY </button>
             </div>
         </div>
         <div id="total">
@@ -49,6 +52,7 @@
                     <div>
                         <h3 id="Amt"> ₹0 </h3>
                         <h3> -₹150 </h3>
+                        <h3> ₹150 </h3>
                         <h3> ₹199 </h3>
                         <h3> <span id="strick">₹999</span> ₹299 </h3>
                     </div>
@@ -59,6 +63,7 @@
                     <h3 id="total_amt"> ₹0 </h3>
                 </div>
                 <button onclick="finalpay()"> Procedure to Payment </button>
+                <button> Procedure to Payment </button>
             </div>
         </div>
         <div class="part3">
@@ -160,6 +165,68 @@
         cart.splice(i, 1);
         localStorage.setItem("cartadd", JSON.stringify(cart));
         playme(cart);
+=======
+    let TotalAmt = totalAmount + 648;
+    document.querySelector("#total_amt").innerText = "₹" + TotalAmt;
+
+    cartshow(cart);
+    function cartshow(arr) {
+        document.querySelector(".box1").innerHTML = "";
+        arr.map((e, i) => {
+            let head = document.createElement("div");
+            head.className = "part1";
+
+            let d1 = document.createElement("div");
+            let d2 = document.createElement("div");
+            let d3 = document.createElement("div");
+
+            let h3 = document.createElement("h3");
+            h3.innerText = e.name;
+
+            let price = document.createElement("h4");
+            price.innerText = e.price;
+            price.style.top = "0";
+
+            let hr = document.createElement("hr");
+
+            let ul = document.createElement("ul");
+
+            let li1 = document.createElement("li");
+            li1.innerText = e.cap1;
+
+            let li2 = document.createElement("li");
+            li2.innerText = e.cap2;
+
+            let li3 = document.createElement("li");
+            li3.innerText = e.cap3;
+
+            let li4 = document.createElement("li");
+            li4.innerText = e.cap4;
+
+            ul.append(li1, li2, li3, li4);
+
+
+            let but2 = document.createElement("button");
+            but2.innerText = "delete";
+            but2.addEventListener("click", function () {
+                deleteit(e, i);
+            });
+
+            d1.append(h3, hr, ul);
+            d2.append(price);
+            d3.append(but2);
+
+            head.append(d1, d2, d3);
+
+            document.querySelector(".box1").append(head);
+
+        })
+    }
+
+    function deleteit(e, i) {
+        cart.splice(i, 1);
+        localStorage.setItem("cartadd", JSON.stringify(cart));
+        cartshow(cart);
         // item total
         totalAmount = totalAmount - Number(e.cost);
         document.querySelector("#Amt").innerText = "₹" + totalAmount;
@@ -228,6 +295,10 @@
 
         })
 
+    }
+
+    function shoping() {
+        window.location.href = "./booking/booking.html";
     }
 
 

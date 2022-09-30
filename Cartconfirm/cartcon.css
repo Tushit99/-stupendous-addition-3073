@@ -1,0 +1,12 @@
+
+#main{
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center;
+}
+
+#main>div{
+    padding: 10px;
+}
+
+
