@@ -11,6 +11,9 @@ body{
 }
 
 nav>img{
+    width: 180px;  
+    cursor: pointer;
+
     width: 18%;
 }
 
@@ -41,12 +44,22 @@ a{
 }
 
 
+/* empty */
+
+.empty{
+    text-align: center; 
+    margin: auto; 
+    /* border: 2px solid black;  */
+    width: 60%; 
+}
+
 /* box1 */
 
 .box1{
     padding: 10px;  
     border: 2px solid rgb(183, 183, 183); 
     border-radius: 10px;
+    width: 66%;
     width: 70%;
 }
 
@@ -70,6 +83,9 @@ a{
     border: 0; 
     background-color: rgb(0, 0, 0); 
     font-size: medium;
+    color: white;   
+    cursor: pointer; 
+}  
     color: white; 
     border-radius: 2px; 
 }
@@ -124,6 +140,7 @@ a{
     text-align: end;
 }
 
+
 /* part 2 */
 
 .part2{
@@ -143,6 +160,7 @@ a{
     background-color: black;  
     color: white; 
     padding: 10px 14px; 
+    cursor: pointer; 
     border: 1px solid black; 
 }
 
@@ -168,6 +186,7 @@ a{
     background-color: black;  
     color: white; 
     padding: 10px 14px;
+    border: 1px solid black; 
     border: 1px solid black;  
     cursor: pointer;  
 }
@@ -184,3 +203,69 @@ a{
     border: 0.5px solid black; 
     border-radius: 20px;
 }
+
+
+/* history _ div */
+
+.his_div{
+    width: 90%; 
+    border: 2px solid rgb(194, 194, 194); 
+    margin: auto; 
+    background: linear-gradient(110deg, #ffffff8c 75%, #e3e3e3 75%); 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 10px 20px ;
+    border-radius: 10px ; 
+}
+
+
+
+@media all and (max-width: 940px){
+    #total{
+        display: grid; 
+        grid-template-columns: auto; 
+        grid-template-areas: "n2" 
+                             "n1";
+    }
+
+    .box1{  
+        width: 100%;  
+        grid-area: n1; 
+        border: 0; 
+        padding: 0 20px;
+    }
+
+    .box2{
+        position:static; 
+        height: 460px; 
+        width: 100%; 
+        margin: 20px auto;
+        grid-area: n2;
+    } 
+    .part1{
+        display: grid; 
+        grid-template-columns: auto auto ;  
+        grid-template-areas: "a1 a2"
+                            "a1 a3"; 
+    }
+    .part1>div:nth-child(1){
+        grid-area: a1; 
+        /* border: 2px solid black; */
+    }
+
+    .part1>div:nth-child(2){
+        /* border: 2px solid black; */
+        grid-area: a2;
+        margin: auto;
+        text-align: center;
+    }
+    .part1>div:nth-child(3){
+        /* border: 2px solid black; */
+        grid-area: a3;
+        margin: auto;
+        text-align: center;
+    }
+
+}
+
