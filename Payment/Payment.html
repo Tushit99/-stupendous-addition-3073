@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./payment.css">
+</head>
+
+<body>
+    <div class="payme">
+        <div class="pay">
+            <h1> Payment </h1>
+            <div>
+                <h3>How will you like to pay </h3>
+                <div class="pay_img">
+                    <div id="cardtopay" onclick="cardpay()">
+                        <img src="https://cybersecfill.com/wp-content/uploads/2019/05/Contactless-Cards-1.png"
+                            alt="card-pay-img">
+                        <h4> Card Paryment </h4>
+                    </div>
+                    <div id="cashtopay" onclick="cashpay()">
+                        <img src="https://i.pinimg.com/736x/09/51/c2/0951c247dcd42d66662a622ab5451f19.jpg"
+                            alt="COD-img">
+                        <h4> Cash payment </h4>
+                    </div>
+                </div>
+                <div class="card_detail">
+                    <div>
+                        <h4> Card Number </h4>
+                        <input type="text" id="cardNo" placeholder="Card Number">
+                    </div>
+                    <div>
+                        <h4> Expiration date </h4>
+                        <div>
+                            <select id="month">
+                                <option value="">Month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                            <select id="year">
+                                <option value="">Year</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <h4> Security Code </h4>
+                        <input type="password" placeholder="Enter 4 digit Code" id="code">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="address">
+            <h1> Address: </h1>
+            <div class="add_detail">
+                <div>
+                    <h3>State:</h3>
+                    <select id="select">
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jammu Kashmir">Jammu Kashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                    </select>
+                </div>
+                <div>
+                    <h3> House/Flat No. </h3>
+                    <input type="text" id="flat" required placeholder="House/Flat Number">
+                </div>
+                <div>
+                    <h3>Landmark</h3>
+                    <input type="text" id="land" placeholder="Landmark(Optional)">
+                </div>
+                <div>
+                    <h3> Name </h3>
+                    <input type="text" id="name" required placeholder="Name">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space">
+
+    </div>
+    <footer>
+        <img onclick="gohome()" src="https://etimg.etb2bimg.com/photo/66882291.cms" alt="">
+        <h2> Total: <span id="final_amount"></span> </h2>
+        <button onclick="placeodd()"> Place order </button>
+    </footer>
+</body>
+
+</html>
+
+<script>
+
+    let cart = JSON.parse(localStorage.getItem("cartadd")) || [];
+
+    let hist = JSON.parse(localStorage.getItem("hist")) || [];
+
+    let amount = localStorage.getItem("totalpay");
+    // console.log(amount); 
+    document.querySelector("#final_amount").innerText = amount
+
+    let paymenting = null;
+
+    function cashpay() {
+        let b = document.querySelector("#cashtopay");
+        let k = document.querySelector("#cardtopay");
+        k.style.border = "2px solid rgba(255, 255, 255, 0)";
+        b.style.border = "2px solid blue";
+        paymenting = "cash";
+
+        let st = document.querySelector(".pay .card_detail");
+        st.style.display = "none"
+    }
+
+    function cardpay() {
+        let b = document.querySelector("#cashtopay");
+        let k = document.querySelector("#cardtopay");
+        k.style.border = "2px solid blue";
+        b.style.border = "2px solid rgba(255, 255, 255, 0)";
+        paymenting = "card";
+
+        let st = document.querySelector(".pay .card_detail");
+        st.style.display = "grid"
+    }
+
+    function gohome() {
+        window.location.href = "../booking/booking.html"
+    }
+
+    function placeodd() {
+        if (paymenting == "card") {
+
+            let c1 = document.querySelector("#cardNo").value;
+            let s1 = document.querySelector("#select").value;
+            let flat = document.querySelector("#flat").value;
+            let na = document.querySelector("#name").value;
+
+            obj = {
+                name: na,
+                cardno: c1,
+                state: s1,
+                address: flat,
+                amount: amount,
+            }
+            hist.push(obj);
+            localStorage.setItem("hist", JSON.stringify(hist));
+            localStorage.removeItem("cartadd");
+        }
+        if (paymenting == "cash") {
+            let s1 = document.querySelector("#select").value;
+            let flat = document.querySelector("#flat").value;
+            let na = document.querySelector("#name").value;
+
+            let pow = Date();
+            let dax = pow.split(" ");
+            let day1 = dax[0];
+            let month1 = dax[1];
+            let date1 = dax[2];
+            let year1 = dax[3];
+            let time1 = dax[4];
+
+            obj = {
+                name: na,
+                state: s1,
+                address: flat,
+                amount: amount, 
+                date: `${date1}/${month1}/${year1}`, 
+                time: time1 
+            }
+            hist.push(obj);
+            localStorage.setItem("hist", JSON.stringify(hist));
+            localStorage.removeItem("cartadd");
+            alert("Purchase Successfull")
+            window.location.href = "../booking/booking.html";
+        }
+
+    }
+
+
+
+    // localStorage.removeItem("item_name")
+
+
+</script>

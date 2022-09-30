@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Cart.css">
+</head>
+
+<body>
+    <div>
+        <div id="main">
+            <nav>
+                <img onclick="shoping()" src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_category/images/supply/partner-training/1628575858610-5b0ae4.png"
+                    alt="">
+                <div>
+                    <a href=""> Blog </a>
+                    <a href="../booking/booking.html"> Register As Professional </a>
+                    <a> <a href="">Login</a> <a href="">SignUP</a> </a>
+                </div>
+            </nav>
+        </div>
+        <div class="part2">
+            <h2> My Bookings </h2>
+            <div>
+                <button onclick="order()"> ONGOING </button>
+                <button onclick="history2()"> HISTORY </button>
+            </div>
+        </div>
+        <div id="total">
+            <!-- data show -->
+            <div class="box1">
+                <!-- If No data is here -->
+                <h2> Cart is Empty </h2>
+                <!-- Data appended  -->
+            </div>
+            <!-- total show -->
+            <div class="box2">
+                <h2> Payment summary </h2>
+                <div class="dis">
+                    <div>
+                        <h3>Item total</h3>
+                        <h3> Membership Discount </h3>
+                        <h3> Convenience fee </h3>
+                        <h3> Plus Membership </h3>
+                    </div>
+                    <div>
+                        <h3 id="Amt"> ₹0 </h3>
+                        <h3> -₹150 </h3>
+                        <h3> ₹199 </h3>
+                        <h3> <span id="strick">₹999</span> ₹299 </h3>
+                    </div>
+                </div>
+                <hr>
+                <div class="dis">
+                    <h3>Total</h3>
+                    <h3 id="total_amt"> ₹0 </h3>
+                </div>
+                <button onclick="finalpay()"> Procedure to Payment </button>
+            </div>
+        </div>
+        <div class="part3">
+            <button onclick="shoping()"> ADD A SERVICE </button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+
+    let totalAmount = 0;
+
+    // amount 
+
+    let cart = JSON.parse(localStorage.getItem("cartadd")) || [];
+
+    cart.map((e) => {
+        totalAmount += Number(e.cost);
+    });
+    document.querySelector("#Amt").innerText = "₹" + totalAmount;
+
+    let TotalAmt = totalAmount + 348;
+    document.querySelector("#total_amt").innerText = "₹" + TotalAmt;
+
+
+    playme(cart);
+    function playme(cart) {
+        if (cart.length == 0) {
+            document.querySelector("#total").innerHTML = ""
+            let d1 = document.createElement("div");
+            d1.className = "empty"
+            let h1 = document.createElement("h1");
+            h1.innerText = "Cart is Empty"
+            d1.append(h1);
+            document.querySelector("#total").append(d1);
+        }
+        else {
+            cartshow(cart);
+            function cartshow(arr) {
+                document.querySelector(".box1").innerHTML = "";
+                arr.map((e, i) => {
+                    let head = document.createElement("div");
+                    head.className = "part1";
+
+                    let d1 = document.createElement("div");
+                    let d2 = document.createElement("div");
+                    let d3 = document.createElement("div");
+
+                    let h3 = document.createElement("h3");
+                    h3.innerText = e.name;
+
+                    let price = document.createElement("h4");
+                    price.innerText = e.price;
+                    price.style.top = "0";
+
+                    let hr = document.createElement("hr");
+
+                    let ul = document.createElement("ul");
+
+                    let li1 = document.createElement("li");
+                    li1.innerText = e.cap1;
+
+                    let li2 = document.createElement("li");
+                    li2.innerText = e.cap2;
+
+                    let li3 = document.createElement("li");
+                    li3.innerText = e.cap3;
+
+                    let li4 = document.createElement("li");
+                    li4.innerText = e.cap4;
+
+                    ul.append(li1, li2, li3, li4);
+
+                    let but2 = document.createElement("button");
+                    but2.innerText = "delete";
+                    but2.addEventListener("click", function () {
+                        deleteit(e, i);
+                    });
+
+                    d1.append(h3, hr, ul);
+                    d2.append(price);
+                    d3.append(but2);
+
+                    head.append(d1, d2, d3);
+
+                    document.querySelector(".box1").append(head);
+
+                })
+            }
+        }
+    }
+
+
+
+    function deleteit(e, i) {
+        cart.splice(i, 1);
+        localStorage.setItem("cartadd", JSON.stringify(cart));
+        playme(cart);
+        // item total
+        totalAmount = totalAmount - Number(e.cost);
+        document.querySelector("#Amt").innerText = "₹" + totalAmount;
+        // Total 
+        TotalAmt = TotalAmt - Number(e.cost);
+        document.querySelector("#total_amt").innerText = "₹" + TotalAmt;
+        window.location.reload();
+    }
+
+    function shoping() {
+        window.location.href = "../booking/booking.html";
+    }
+
+
+    function finalpay() {
+        localStorage.setItem("totalpay", totalAmount)
+        window.location.href = "../Payment/Payment.html";
+    }
+
+
+    function order() {
+        window.location.reload();
+        playme(cart);
+    }
+
+    // history 
+
+    let history = JSON.parse(localStorage.getItem("hist")) || [];
+    
+    function history2() {
+        document.querySelector("#total").innerHTML = ""
+
+        history.map((e) => {
+
+            let d1 = document.createElement("div");
+            d1.className = "his_div"
+            d1
+
+            let d2 = document.createElement("div");
+            let d3 = document.createElement("div");
+
+
+            let na1 = document.createElement("h1");
+            na1.innerText = e.name;
+
+            let add = document.createElement("h3");
+            add.innerText = "Address: " + e.address;
+
+            let sta = document.createElement("h3");
+            sta.innerText = "State: " + e.state;
+
+            let amt = document.createElement("h2");
+            amt.innerText = "Amount: " + e.amount;
+
+            let date = document.createElement("h3");
+            date.innerText = "Date:" + e.date;
+
+            let time = document.createElement("h3");
+            time.innerText = "Time: " + e.time;
+
+            d2.append(na1, sta, add, date, time);
+            d3.append(amt);
+
+            d1.append(d2, d3)
+            document.querySelector("#total").append(d1);
+
+        })
+
+    }
+
+
+</script>
