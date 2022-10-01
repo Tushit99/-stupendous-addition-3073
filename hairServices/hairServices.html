@@ -17,9 +17,9 @@
                     alt="">
             </div>
             <div>
-                <a href=""> Home </a>
-                <a href=""> Booking </a>
-                <a href=""> Blog </a>
+                <a href="../index.html"> Home </a>
+                <a href="../booking/booking.html"> Services </a>
+                <a href="../Cart/Cart.html"> cart </a>
             </div>
         </nav>  
         <div class="opts">
@@ -63,88 +63,103 @@
         <div>
             <h1> Express Trims </h1>
             <div class="box1"> 
-                <!-- part 01 -->
-                <div class="part1">
-                    <div>
-                        <h3> Express Trim </h3>
-                        <h4> Rating: 4.82(6.2k) </h4>
-                        <h4> ₹399 </h4>
-                        <hr>
-                        <ul>
-                            <li> Face & neck bleach </li>
-                            <li> Eyebrow threading </li>
-                            <li> Eyebrow Pinacolada Fruit cleanup </li>
-                        </ul>
-                        <button> Edit your package </button>
-                    </div>
-                    <div>
-                        <button> ADD </button>
-                    </div>
-                </div>
-                <!-- part 02 -->
-                <div class="part1">
-                    <div>
-                        <h3> Full Body Indulgence </h3>
-                        <h4> Rating: 4.77(113.3k) </h4>
-                        <h4> ₹3,929 </h4>
-                        <hr>
-                        <ul>
-                            <li> Eyebrow threading </li>
-                            <li> Chocolate Roll-on </li>
-                            <li> Elysian firming wine glow facial </li>  
-                            <li> Elysian Chocolte & Vanilla manicure </li>
-                            <li> Elysian Chocolte & Vanilla pedicure </li>
-                        </ul>
-                        <button> Edit your package </button>
-                    </div>
-                    <div>
-                        <button> ADD </button>
-                    </div>
-                </div> 
-                <!-- part 03 -->
-                <div class="part1">
-                    <div>
-                        <h3> Wax & glow </h3>
-                        <h4> Rating: 4.77(53.8k) </h4>
-                        <h4> ₹3,359 </h4>
-                        <hr>
-                        <ul>
-                            <li> Full legs RICA </li>
-                            <li> Full arms + Underarms(RICA) </li>
-                            <li> Upper lip wax </li> 
-                            <li> Eyebrow threading </li>  
-                            <li> O3+ power brightening facial </li>
-                        </ul>
-                        <button> Edit your package </button>
-                    </div>
-                    <div>
-                        <button> ADD </button>
-                    </div>
-                </div>
-                <!-- part 04 -->  
-                <div class="part1">
-                    <div>
-                        <h3> Mani pedi delight </h3>
-                        <h4> Rating: 4.76(24.9k) </h4>
-                        <h4> ₹1,949 </h4>
-                        <hr>
-                        <ul>
-                            <li> Eyebrow threading </li>
-                            <li> Upper lip wax </li>  
-                            <li> Elysian Chocolate & Vanilla manicure </li>  
-                            <li> Elysian Chocolate & Vanilla pedicure </li>  
-                        </ul>
-                        <button> Edit your package </button>
-                    </div>
-                    <div>
-                        <button> ADD </button>
-                    </div>
-                </div> 
+                <!-- displaying it -->
             </div>
         </div>
     </div>
 </body>
 
 </html>
+
+
+<script>
+
+let arr = [
+    {name: "Express Trim" , rating: "Rating: 4.82(6.2k)", price: "₹399",cost:399 , cap1: "Face & neck bleach", cap2: "Eyebrow threading", cap3: "Eyebrow Pinacolada Fruit cleanup", cap4: "Elysian Chocolte & Vanilla pedicure" },  
+    {name: "Full Body Indulgence" , rating: "Rating: 4.77(113.3k)", price: "₹3,929" ,cost:3929 , cap1: "Eyebrow threading", cap2: "Elysian firming wine glow facial", cap3: "Elysian firming wine glow facial", cap4: "Elysian Chocolte & Vanilla manicure" },  
+    {name: "Wax & glow" , rating: "Rating: 4.77(53.8k)", price: "₹3,359" ,cost: 3359 , cap1: "Full legs RICA", cap2: "Full arms + Underarms(RICA)", cap3: "Upper lip wax", cap4: "Eyebrow threading" },  
+    {name: "Mani pedi delight" , rating: "Rating: 4.76(24.9k)", price: "₹1,949",cost: 1949 , cap1: "Eyebrow threading", cap2: "Upper lip wax", cap3: "Elysian Chocolate & Vanilla manicure", cap4: "Elysian Chocolate & Vanilla pedicure" } 
+]
+
+localStorage.setItem("hair", JSON.stringify(arr))
+
+let data = JSON.parse(localStorage.getItem("hair")) || [] ;  
+
+let cart = JSON.parse(localStorage.getItem("cartadd")) || [] ; 
+
+showme(data); 
+function showme(arr){     
+    document.querySelector(".box1").innerHTML= ""; 
+    arr.map((e)=>{ 
+        let head = document.createElement("div"); 
+        head.className = "part1";  
+    
+        let d1 = document.createElement("div");  
+        let d2 = document.createElement("div");   
+    
+        let h3 = document.createElement("h3"); 
+        h3.innerText = e.name; 
+    
+        let h41 = document.createElement("h4"); 
+        h41.innerText = e.rating ; 
+
+        let h42 = document.createElement("h4"); 
+        h42.innerText = e.price ; 
+
+        let hr = document.createElement("hr");  
+
+        let ul = document.createElement("ul"); 
+
+        let li1 = document.createElement("li"); 
+        li1.innerText = e.cap1 ; 
+
+        let li2 = document.createElement("li"); 
+        li2.innerText = e.cap2 ; 
+
+        let li3 = document.createElement("li"); 
+        li3.innerText = e.cap3 ;  
+
+        let li4 = document.createElement("li"); 
+        li4.innerText = e.cap4 ; 
+
+        ul.append(li1,li2,li3,li4); 
+
+        let but2 = document.createElement("button"); 
+        but2.innerText = "Add" ;  
+        but2.addEventListener("click", function (){
+            addtov(e); 
+        });  
+
+        d1.append(h3,h41,h42,hr,ul); 
+        d2.append(but2);  
+
+        head.append(d1,d2); 
+
+        document.querySelector(".box1").append(head);  
+    })    
+
+}   
+
+function addtov(e){ 
+    let par = true; 
+    cart.filter((k)=>{
+        if(k == e){
+            par = false; 
+        } 
+    })
+    if(par==true){
+        cart.push(e); 
+        localStorage.setItem("cartadd", JSON.stringify(cart));  
+        alert("data Added"); 
+    } 
+    else{
+        alert("data is alredy added");
+    } 
+}
+
+
+
+
+</script>
 
 

@@ -1,19 +1,20 @@
 
 body{  
     font-family: Arial, Helvetica, sans-serif;  
-    margin: 0; 
+    margin: auto;  
     padding: 0; 
     background-color: rgb(233, 233, 233);
-    width: 100%; 
+    width: 99%; 
+    /* border: 2px solid black; */
 } 
 
 #main{
-    /* background-image: url("https://vijayawadacityservice.com/wp-content/uploads/2022/02/technician-service-removing-air-filter-air-conditioner-cleaning-min-scaled.jpeg");  */
-    background-image: url("https://de927adv5b23k.cloudfront.net/wp-content/uploads/2019/03/07121509/Urban-Clap-04-03-2019226718.jpg");
+    background-image: url("https://res.cloudinary.com/urbanclap/image/upload/images/growth/home-screen/1615375782838-f890f8.jpeg");
     background-repeat: no-repeat; 
-    background-size: 100% ;  
+    background-size: 100% auto ;    
     width: 98%; 
-    height: 550px; 
+    height: 760px; 
+    /* border: 2px solid black; */
 }
 
 nav>img{
@@ -34,7 +35,135 @@ a{
     color: rgb(255, 255, 255);  
 }
 
-/* part 1 */
+#sig{
+    cursor: pointer; 
+}
+
+/* login -----------------------------------------  */
+
+.login{
+    margin: auto;  
+    border: 2px solid rgb(124, 124, 124);
+    width: 26%; 
+    position: fixed; 
+    font-size: medium;
+    top: 0; 
+    bottom: 0; 
+    right: 0; 
+    background-color: white; 
+    z-index: -1; 
+    display: none; 
+    text-align: center; 
+} 
+
+.login h2{
+    margin: 0 2px;  
+    font-size: large; 
+    padding: 0; 
+    font-weight: 100; 
+}
+
+.login input{
+    margin: 0; 
+    padding: 6px 4px;   
+    font-size: large; 
+    border-radius: 4px;
+}  
+
+.login button{
+    padding: 4px;  
+    font-size: large; 
+    border-radius: 4px;
+}
+
+.login>div{
+    width: 100%;  
+    margin: auto;  
+    padding: 20px;  
+    /* border: 2PX solid black; */
+    display: grid; 
+    /* top: 0;  */
+    text-align: left; 
+    gap: 10px;  
+}
+
+#cross{ 
+    display: flex; 
+    align-items: center; 
+    justify-content: end; 
+    padding-right: 10px; 
+    /* border: 2px solid black;   */
+    /* padding: 0;  */
+}
+
+#cross>h3{
+    border-radius: 50%;
+    width: 30px; 
+    height: 30px; 
+    margin: 0;display: flex; 
+    justify-content: center; 
+    align-items: center;
+    text-align: right;
+    background-color: black; 
+    color: rgb(255, 255, 255); 
+    font-weight: bolder;
+    padding: 0;
+    cursor: pointer; 
+    border: 2px solid black;  
+}
+
+#sut{
+    background-color: black; 
+    color: white; 
+    padding: 10px 0;  
+    cursor: pointer;  
+}
+
+/* box1 -------------------------------------- */  
+
+.box1{
+    width: 85%; 
+    border-radius: 6px; 
+    display: flex; 
+    align-items: center; 
+    padding: 20px;
+    justify-content: center ;  
+    position: absolute;  
+    top: 400px;  
+    flex-wrap: wrap; 
+    margin: auto; 
+    left: 5%;
+    background-color: white; 
+}
+.box1>a{
+    margin: auto 4px 8px 4px; 
+    display: grid; 
+    width: 140px; 
+    padding: 0 10px; 
+    /* border: 2PX solid black; */
+    text-align: center; 
+    height: 140px;
+} 
+
+.box1>a:hover{
+    background-color: rgb(236, 236, 236);
+}
+
+.box1 img{
+    width: 50%;  
+    margin: auto; 
+    padding: 10px;
+}
+
+.box1 h4{
+    margin: 0; 
+    padding: 0; 
+    font-size: small; 
+    font-weight: 100;
+    color: black;
+}
+
+/* part 1 --------------------------------- */
 
 .part1{
     margin: auto; 
@@ -57,15 +186,28 @@ h1{
     width: 500px; 
     border-radius: 4px;  
     border: 0px; 
-
 }
 
-/* part 2 */
+.part1 h5{
+    cursor: pointer; 
+    font-weight: 100; 
+    /* border: 2px solid black;  */
+    width: 200px; 
+    margin: auto;
+}
+
+/* part 2 ------------------------------- */
 
 .part2{
-    display: flex; 
+    display: flex;  
 }
 
+.main2{
+    background-color: white; 
+    width: 100%;  
+    padding: 10px 0; 
+    margin: 26px 0;
+}
 
 .box2{
     width: 85%; 
@@ -88,32 +230,16 @@ h1{
     width: 84%;
 }
 
-/* part 3 */
+/* offer ---------------------------------- */
 
-.part3{
-    text-align: center;  
-    background-color: white;  
-    padding: 10px 0;   
-    margin-bottom: 20px;
+.offer{
+    background-color: white; 
+    text-align: center; 
+    margin: auto; 
+    padding: 10px 0;
 }
 
-/* part 4 */
-.part4{
-    width: 100%; 
-    text-align: center; 
-    padding: 10px 0;  
-    background-color: white; 
-}   
-
-.part4 img{
-    width: 100%;  
-    text-align: center; 
-    margin: 10px 0; 
-    padding: 10px 0;  
-    /* background-color: white;  */
-}  
-
-/*  */
+/* policy ---------------------------------- */
 
 h6{ 
     font-weight: 100;
@@ -137,10 +263,52 @@ h6{
     border: 2px solid rgba(200, 200, 200, 0.786);
     border-radius: 8px; 
     color: blue ;  
+    cursor: pointer;
     background-color: white; 
 }
+.policy button:hover{
+    border: 2px solid rgba(0, 0, 0, 0.786);
+    color: rgb(255, 255, 255) ;  
+    background-color: rgb(0, 4, 255);
+}
 
-/* skill_India */  
+
+/* part 4 ----------------------------- */
+
+.part4{
+    width: 100%; 
+}  
+
+.part4 img{
+    width: 100%; 
+}
+
+/* Appliances --------------------------  */
+
+.Applian{
+    background-color: white ; 
+    margin: auto; 
+    width: 100%; 
+    text-align: center; 
+}
+
+.Applian>div{
+    display: flex ;
+    width: 70%; 
+    margin: auto; 
+    align-items: center; 
+    justify-content: space-around; 
+} 
+
+.Applian>div>div{
+    margin: 0 14px;
+}
+
+.Applian img{
+    width: 100%; 
+}
+
+/* skill_India --------------------------------- */  
 
 .skill_India{
     display: flex;  
@@ -165,7 +333,7 @@ h6{
     width: 14%; 
 }
 
-/* footer */
+/* footer -----------------------  */
 
 .footer{
     background-color: black; 
@@ -182,8 +350,7 @@ h6{
 } 
 .f1>a{ 
     margin: 20px 14px ;
-    font-size: small;   
-    font-weight: 100; 
+    font-size: medium;  
     cursor: pointer;  
 }
 
@@ -194,7 +361,7 @@ h6{
 
 .f2>div{
     /* border: 2px solid white;   */
-    margin: 10px auto;  
+    margin: 30px auto;  
     display: flex; 
     width: 96%; 
     flex-wrap: wrap; 
@@ -209,16 +376,16 @@ h6{
 
 
 .contact{
-    width: 180px;   
+    width: 260px;   
     display: flex;  
     /* border: 2px solid white; */
     justify-content: space-around; 
 }
 
 .contact img{
-    width: 20px; 
+    width: 30px; 
     cursor: pointer; 
-    margin: 0 6px;  
+    margin: 0 10px;  
 }
 
 
@@ -230,6 +397,41 @@ h6{
 
 .app img{
     width: 90px; 
+}
+
+/* media qua-----------------------------------------  */
+
+@media all and (max-width:870px){
+    .box1{
+        top: 300px;
+    }  
+
+    .box1>a{
+        width: 100px;
+    }
+    .part1 input{
+        margin: auto;
+    }
+
+    #main{
+        height: 640px; 
+        /* border: 2px solid black;  */
+        margin: auto; 
+        width: 100%; 
+    }
+    .login {
+        width: 90%; 
+    }
+}
+
+
+/* media 300px */  
+
+@media all and (max-width:860px){
+
+    #main{
+        height: 940px; 
+    }
 }
 
 

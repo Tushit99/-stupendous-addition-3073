@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./salonMen.css">
+</head>
+
+<body>
+    <div>
+        <nav>
+            <div>
+                <img src="https://static.wikia.nocookie.net/logopedia/images/c/cd/Urban_Company.jpg/revision/latest/scale-to-width-down/320?cb=20200418084112"
+                    alt="">
+            </div>
+            <div>
+                <a href="../index.html"> Home </a>
+                <a href="../booking/booking.html"> Services </a>
+                <a href="../Cart/Cart.html"> cart </a>
+            </div>
+        </nav>  
+        <div class="opts">
+            <div>
+                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1661777294120-283573.jpeg" alt="img-c1">  
+                <h5> Packages </h5>
+            </div>
+            <div>
+                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631190374864-78f3e8.jpeg" alt="img-c2">  
+                <h5> Men/kid's Haircut  </h5>
+            </div>
+            <div>
+                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631189933595-01692d.png" alt="img-c3">  
+                <h5> Hair color </h5>
+            </div>
+            <div>
+                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631189957304-ea2a7b.png" alt="img-c4">  
+                <h5> Shave/Beard Grooming </h5>
+            </div>
+            <div>
+                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631189857376-d49e47.png" alt="img-c5">  
+                <h5> Face Care </h5>
+            </div>
+            <div>
+                <img src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631189905841-237b37.png" alt="img-c6">  
+                <h5> Massage Therapy </h5>
+            </div>
+        </div>
+        <div>
+            <h1> Packages </h1>
+            <div class="box1"> 
+                <!-- displaying it -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+
+let arr = [
+    {name: "Haircut + Relaxing Head Message" , rating: "4.84 (216K)", price: "₹699",cost: 699 , cap1: "men's Haircut", cap2: "20 min Head Massage", cap3: "face Detan Pack", cap4: "Ganier color Naturals" },  
+    {name: "Father & kid Haircut" , rating: "4.84 (195.1K)", price: "₹599" ,cost: 599 , cap1: "10 min Head Massage", cap2: "Men's Haircut", cap3: "Kids Haircut(Boys)", cap4: "Beard Shape & style" },  
+    {name: "Haircut + Face Detan" , rating: "4.91 (219.4K)", price: "₹849" ,cost: 849 , cap1: "Face Detan Pack", cap2: "Men's Haircut", cap3: "Neck Detan Pack", cap4: "10 min Head Massage" },  
+    {name: "Make Your Own Package" , rating: "4.83 (199K)", price: "₹1,249",cost: 1249  , cap1: "Men's Haircut", cap2: "10 min Head Massage", cap3: "Head Detan Pack", cap4: "Beard Shape & Style" }, 
+    {name: "Haircut + Beard Grooming + Relaxing Head Massage" , rating: "4.85 (196.5K)", price: "₹799",cost: 799  , cap1: "Men's Haircut", cap2: "10 min Head Massage", cap3: "Ganier color Naturals", cap4: "Beard Shape & Style" }, 
+]
+
+localStorage.setItem("hair", JSON.stringify(arr))
+
+let data = JSON.parse(localStorage.getItem("hair")) || [] ;  
+
+let cart = JSON.parse(localStorage.getItem("cartadd")) || [] ; 
+
+showme(data); 
+function showme(arr){     
+    document.querySelector(".box1").innerHTML= ""; 
+    arr.map((e)=>{ 
+        let head = document.createElement("div"); 
+        head.className = "part1";  
+    
+        let d1 = document.createElement("div");  
+        let d2 = document.createElement("div");   
+    
+        let h3 = document.createElement("h3"); 
+        h3.innerText = e.name; 
+    
+        let h41 = document.createElement("h4"); 
+        h41.innerText = e.rating ; 
+
+        let h42 = document.createElement("h4"); 
+        h42.innerText = e.price ; 
+
+        let hr = document.createElement("hr");  
+
+        let ul = document.createElement("ul"); 
+
+        let li1 = document.createElement("li"); 
+        li1.innerText = e.cap1 ; 
+
+        let li2 = document.createElement("li"); 
+        li2.innerText = e.cap2 ; 
+
+        let li3 = document.createElement("li"); 
+        li3.innerText = e.cap3 ;  
+
+        let li4 = document.createElement("li"); 
+        li4.innerText = e.cap4 ; 
+
+        ul.append(li1,li2,li3,li4); 
+
+        let but2 = document.createElement("button"); 
+        but2.innerText = "Add" ;  
+        but2.addEventListener("click", function (){
+            addtov(e); 
+        });  
+
+        d1.append(h3,h41,h42,hr,ul); 
+        d2.append(but2);  
+
+        head.append(d1,d2); 
+
+        document.querySelector(".box1").append(head);  
+    })    
+
+}   
+
+function addtov(e){ 
+    let par = true; 
+    cart.filter((k)=>{
+        if(k == e){
+            par = false; 
+        } 
+    })
+    if(par==true){
+        cart.push(e); 
+        localStorage.setItem("cartadd", JSON.stringify(cart));  
+        alert("data Added"); 
+    } 
+    else{
+        alert("data is alredy added");
+    } 
+}
+
+
+
+
+</script>
+
+

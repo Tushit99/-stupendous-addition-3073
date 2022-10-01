@@ -159,7 +159,7 @@
     }
 
     function gohome() {
-        window.location.href = "../booking/booking.html"
+        window.location.href = "../index.html"
     }
 
     function placeodd() {
@@ -204,9 +204,9 @@
             }
             hist.push(obj);
             localStorage.setItem("hist", JSON.stringify(hist));
-            localStorage.removeItem("cartadd");
+            localStorage.removeItem("cartadd"); 
             alert("Purchase Successfull")
-            window.location.href = "../booking/booking.html";
+            window.location.href = "../index.html";
         }
 
     }
